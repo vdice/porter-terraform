@@ -4,7 +4,5 @@ custom:
     command: "command-override"
     # Supports usual install args as well
     logLevel: TRACE
-    backendConfig:
-      key: "my.tfstate"
     vars:
       var1: "foo"

@@ -88,13 +88,6 @@ func (m *Mixin) Execute(opts ExecuteCommandOptions) error {
 		return fmt.Errorf("could not change directory to specified working dir: %s", err)
 	}
 
-	// Initialize Terraform
-	fmt.Println("Initializing Terraform...")
-	err = m.Init(step.BackendConfig)
-	if err != nil {
-		return fmt.Errorf("could not init terraform, %s", err)
-	}
-
 	command := opts.Action
 	if step.Command != "" {
 		command = step.Command

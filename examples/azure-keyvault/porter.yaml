@@ -1,6 +1,11 @@
 mixins:
   - exec
-  - terraform
+  - terraform:
+      backendConfig:
+        key: "{{ bundle.name }}.tfstate"
+        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
+        container_name: "{{ bundle.credentials.backend_storage_container }}"
+        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
 
 name: porter-terraform-keyvault
 version: 0.1.0
@@ -56,11 +61,6 @@ install:
   - terraform:
       description: "Install Azure Key Vault"
       input: false
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
       outputs:
       - name: vault_uri
 
@@ -68,30 +68,15 @@ upgrade:
   - terraform:
       description: "Upgrade Azure Key Vault"
       input: false
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
       outputs:
       - name: vault_uri
 
 show:
   - terraform:
       description: "Invoke 'terraform show'"
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
       outputs:
       - name: vault_uri
 
 uninstall:
   - terraform:
       description: "Uninstall Azure Key Vault"
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"

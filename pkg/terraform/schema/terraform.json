@@ -20,9 +20,6 @@
             "autoApprove": {
               "type": "boolean"
             },
-            "backendConfig": {
-              "type": "object"
-            },
             "command": {
               "type": "string"
             },
@@ -58,9 +55,6 @@
       "properties": {
         "autoApprove": {
           "type": "boolean"
-        },
-        "backendConfig": {
-          "type": "object"
         },
         "description": {
           "$ref": "#/definitions/stepDescription"
@@ -101,9 +95,6 @@
           "properties": {
             "autoApprove": {
               "type": "boolean"
-            },
-            "backendConfig": {
-              "type": "object"
             },
             "description": {
               "$ref": "#/definitions/stepDescription"

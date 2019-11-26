@@ -22,12 +22,11 @@ type InstallArguments struct {
 	Step `yaml:",inline"`
 
 	// AutoApprove will be deprecated in a later release, it is no longer used, --auto-approve=true is always passed to terraform
-	AutoApprove   bool              `yaml:"autoApprove"`
+	AutoApprove bool `yaml:"autoApprove"`
 
 	Vars          map[string]string `yaml:"vars"`
 	LogLevel      string            `yaml:"logLevel"`
 	Input         bool              `yaml:"input"`
-	BackendConfig map[string]string `yaml:"backendConfig"`
 }
 
 // Install runs a terraform apply
@@ -54,13 +53,6 @@ func (m *Mixin) Install() error {
 	// First, change to specified working dir
 	if err := os.Chdir(m.WorkingDir); err != nil {
 		return fmt.Errorf("could not change directory to specified working dir: %s", err)
-	}
-
-	// Initialize Terraform
-	fmt.Println("Initializing Terraform...")
-	err = m.Init(step.BackendConfig)
-	if err != nil {
-		return fmt.Errorf("could not init terraform, %s", err)
 	}
 
 	// Run Terraform apply

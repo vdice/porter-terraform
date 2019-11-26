@@ -25,7 +25,6 @@ type UninstallArguments struct {
 	AutoApprove   bool              `yaml:"autoApprove"`
 	Vars          map[string]string `yaml:"vars"`
 	LogLevel      string            `yaml:"logLevel"`
-	BackendConfig map[string]string `yaml:"backendConfig"`
 }
 
 // Uninstall runs a terraform destroy
@@ -52,13 +51,6 @@ func (m *Mixin) Uninstall() error {
 	// First, change to specified working dir
 	if err := os.Chdir(m.WorkingDir); err != nil {
 		return fmt.Errorf("could not change directory to specified working dir: %s", err)
-	}
-
-	// Initialize Terraform
-	fmt.Println("Initializing Terraform...")
-	err = m.Init(step.BackendConfig)
-	if err != nil {
-		return fmt.Errorf("could not init terraform, %s", err)
 	}
 
 	// Run terraform destroy

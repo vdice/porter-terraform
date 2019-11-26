@@ -1,5 +1,11 @@
 mixins:
-  - terraform
+  - terraform:
+      backendConfig:
+        key: "{{ bundle.name }}.tfstate"
+        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
+        container_name: "{{ bundle.credentials.backend_storage_container }}"
+        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
+
 
 name: porter-aks
 version: 0.1.0
@@ -76,36 +82,17 @@ install:
   - terraform:
       description: "Install Azure Kubernetes Service"
       input: false
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
 
 upgrade:
   - terraform:
       description: "Upgrade Azure Kubernetes Service"
       input: false
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
 
 show:
   - terraform:
       description: "Invoke 'terraform show'"
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
 
 uninstall:
   - terraform:
       description: "Uninstall Azure Kubernetes Service"
-      backendConfig:
-        key: "{{ bundle.name }}.tfstate"
-        storage_account_name: "{{ bundle.credentials.backend_storage_account }}"
-        container_name: "{{ bundle.credentials.backend_storage_container }}"
-        access_key: "{{ bundle.credentials.backend_storage_access_key }}"
+

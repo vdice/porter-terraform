@@ -1,0 +1,7 @@
+actions:
+  install:
+    - terraform:
+        description: "Install"
+        input: false
+  uninstall: []
+  upgrade: []
