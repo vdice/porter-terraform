@@ -54,6 +54,9 @@
         "outputs": {
           "$ref": "#/definitions/outputs"
         },
+        "state": {
+          "type": "string"
+        },
         "vars": {
           "type": "object"
         }
@@ -93,6 +96,9 @@
             },
             "outputs": {
               "$ref": "#/definitions/outputs"
+            },
+            "state": {
+              "type": "string"
             },
             "vars": {
               "type": "object"

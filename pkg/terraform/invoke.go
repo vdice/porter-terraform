@@ -30,6 +30,10 @@ func (m *Mixin) Invoke(opts InvokeOptions) error {
 	}
 	step.Arguments = commands
 
+	if step.State != "" {
+		step.Flags = append(step.Flags, builder.NewFlag("state", step.State))
+	}
+
 	for _, k := range sortKeys(step.Vars) {
 		step.Flags = append(step.Flags, builder.NewFlag("var", fmt.Sprintf("%s=%s", k, step.Vars[k])))
 	}

@@ -7,3 +7,4 @@ install:
       key: "my.tfstate"
     vars:
       myvar: "foo"
+    state: tfstate

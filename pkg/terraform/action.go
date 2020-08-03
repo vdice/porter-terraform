@@ -112,6 +112,7 @@ type TerraformFields struct {
 	LogLevel      string            `yaml:"logLevel,omitempty"`
 	Input         bool              `yaml:"input,omitempty"`
 	BackendConfig map[string]string `yaml:"backendConfig,omitempty"`
+	State         string            `yaml:"state,omitempty"`
 }
 
 type Output struct {
